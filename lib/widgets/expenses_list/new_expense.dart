@@ -46,6 +46,7 @@ class _NewExpenseState extends State<NewExpense>{
             maxLength: 10,
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
+              prefixText: '\$ ',
               label: Text(
                 'amount',
               )
@@ -53,9 +54,17 @@ class _NewExpenseState extends State<NewExpense>{
           ),
           Row(
             children: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  'Cancel'
+                ),
+              ),
               ElevatedButton(
                 onPressed: () {
-                  print(titleController.text);
+                  print('${titleController.text}, ${amountController.text}');
                 }, 
                 child: Text(
                   'Save Expense'
@@ -63,16 +72,6 @@ class _NewExpenseState extends State<NewExpense>{
               ),
             ],
           ),
-          Row(
-            children: [
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Close'
-                ),
-              ),
-            ],
-          )
         ],
       ),
     );
