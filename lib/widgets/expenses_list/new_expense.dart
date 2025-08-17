@@ -32,6 +32,14 @@ class _NewExpenseState extends State<NewExpense>{
       print(_selectedDate);
     });
   }
+
+  void _submitExpenseData() {
+    final enteredAmount = double.tryParse(_amountController.text);
+    final amountInvalid = enteredAmount == null || enteredAmount <= 0;
+    if (_titleController.text.trim().isEmpty || amountInvalid || _selectedDate == null){
+
+    }
+  }
   
   // void saveTitleInput(String inputValue) {
   //   enteredTitle = inputValue;
