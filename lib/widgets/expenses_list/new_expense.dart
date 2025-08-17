@@ -13,6 +13,17 @@ class _NewExpenseState extends State<NewExpense>{
   // var enteredTitle = '';
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
+
+  void _presentDatePicker () {
+    final now = DateTime.now();
+    final firstDate = DateTime(now.year - 1, now.month, now.day);
+    showDatePicker(
+      context: context, 
+      initialDate: now,
+      firstDate: firstDate, 
+      lastDate: now,
+    );
+  }
   
   // void saveTitleInput(String inputValue) {
   //   enteredTitle = inputValue;
@@ -37,20 +48,44 @@ class _NewExpenseState extends State<NewExpense>{
             maxLength: 50,
             decoration: InputDecoration(
               label: Text(
-                'title'
+                'Title'
               )
             ),
           ),
-          TextField(
-            controller: _amountController,
-            maxLength: 10,
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              prefixText: '\$ ',
-              label: Text(
-                'amount',
+          Row(
+            children: [
+              Expanded(child: 
+                TextField(
+                  controller: _amountController,
+                  maxLength: 10,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    prefixText: '\$ ',
+                    label: Text(
+                      'amount',
+                    )
+                  ),
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Selected Date'
+                    ),
+                    IconButton(
+                      onPressed: _presentDatePicker, 
+                      icon: const Icon(
+                        Icons.calendar_month,
+                      )
+                    ),
+                  ],
+                ),
               )
-            ),
+            ],
           ),
           Row(
             children: [
