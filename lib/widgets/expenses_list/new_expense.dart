@@ -11,8 +11,8 @@ class NewExpense extends StatefulWidget {
 
 class _NewExpenseState extends State<NewExpense>{
   // var enteredTitle = '';
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
+  final _titleController = TextEditingController();
+  final _amountController = TextEditingController();
   
   // void saveTitleInput(String inputValue) {
   //   enteredTitle = inputValue;
@@ -20,8 +20,8 @@ class _NewExpenseState extends State<NewExpense>{
 
   @override
   void dispose(){
-    titleController.dispose();
-    amountController.dispose();
+    _titleController.dispose();
+    _amountController.dispose();
     super.dispose();
   }
 
@@ -33,7 +33,7 @@ class _NewExpenseState extends State<NewExpense>{
         children: [
           TextField(
             // onChanged: saveTitleInput,
-            controller: titleController,
+            controller: _titleController,
             maxLength: 50,
             decoration: InputDecoration(
               label: Text(
@@ -42,7 +42,7 @@ class _NewExpenseState extends State<NewExpense>{
             ),
           ),
           TextField(
-            controller: amountController,
+            controller: _amountController,
             maxLength: 10,
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
@@ -64,7 +64,7 @@ class _NewExpenseState extends State<NewExpense>{
               ),
               ElevatedButton(
                 onPressed: () {
-                  print('${titleController.text}, ${amountController.text}');
+                  print('${_titleController.text}, ${_amountController.text}');
                 }, 
                 child: Text(
                   'Save Expense'
