@@ -88,97 +88,103 @@ class _NewExpenseState extends State<NewExpense>{
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(16, 48, 16, 16),
-      child: Column(
-        children: [
-          TextField(
-            // onChanged: saveTitleInput,
-            controller: _titleController,
-            maxLength: 50,
-            decoration: InputDecoration(
-              label: Text(
-                'Title'
-              )
-            ),
-          ),
-          Row(
+    final keyboardSpace = MediaQuery.of(context).viewInsets.bottom;
+    return SizedBox(
+      height: double.infinity,
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(16, 48, 16, keyboardSpace+16),
+          child: Column(
             children: [
-              Expanded(child: 
-                TextField(
-                  controller: _amountController,
-                  maxLength: 10,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    prefixText: '\$ ',
-                    label: Text(
-                      'amount',
-                    )
-                  ),
+              TextField(
+                // onChanged: saveTitleInput,
+                controller: _titleController,
+                maxLength: 50,
+                decoration: InputDecoration(
+                  label: Text(
+                    'Title'
+                  )
                 ),
               ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      _selectedDate == null ?
-                      'No date selected' 
-                      : formatter.format(_selectedDate!),
+              Row(
+                children: [
+                  Expanded(child: 
+                    TextField(
+                      controller: _amountController,
+                      maxLength: 10,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        prefixText: '\$ ',
+                        label: Text(
+                          'amount',
+                        )
+                      ),
                     ),
-                    IconButton(
-                      onPressed: _presentDatePicker, 
-                      icon: const Icon(
-                        Icons.calendar_month,
-                      )
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          _selectedDate == null ?
+                          'No date selected' 
+                          : formatter.format(_selectedDate!),
+                        ),
+                        IconButton(
+                          onPressed: _presentDatePicker, 
+                          icon: const Icon(
+                            Icons.calendar_month,
+                          )
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              )
-            ],
-          ),
-          const SizedBox(height: 16,),
-          Row(
-            children: [
-              DropdownButton(
-                value: _selectedCategory,
-                items: Category.values.map(
-                  (category) => DropdownMenuItem(
-                    value: category,
+                  )
+                ],
+              ),
+              const SizedBox(height: 16,),
+              Row(
+                children: [
+                  DropdownButton(
+                    value: _selectedCategory,
+                    items: Category.values.map(
+                      (category) => DropdownMenuItem(
+                        value: category,
+                        child: Text(
+                          category.name.toUpperCase(),
+                        ),
+                      ),
+                    ).toList(), 
+                    onChanged: (value) {
+                      if (value == null){
+                        return;
+                      }
+                      setState(() {
+                        _selectedCategory = value;
+                      });
+                    }
+                  ),
+                  const Spacer(),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     child: Text(
-                      category.name.toUpperCase(),
+                      'Cancel'
                     ),
                   ),
-                ).toList(), 
-                onChanged: (value) {
-                  if (value == null){
-                    return;
-                  }
-                  setState(() {
-                    _selectedCategory = value;
-                  });
-                }
-              ),
-              const Spacer(),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text(
-                  'Cancel'
-                ),
-              ),
-              ElevatedButton(
-                onPressed: _submitExpenseData,
-                child: Text(
-                  'Save Expense'
-                ),
+                  ElevatedButton(
+                    onPressed: _submitExpenseData,
+                    child: Text(
+                      'Save Expense'
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }

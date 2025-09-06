@@ -82,6 +82,7 @@ class _ExpensesState extends State<Expenses> {
     }
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text(
             'Flutter ExpenseTracker',
@@ -103,7 +104,7 @@ class _ExpensesState extends State<Expenses> {
           ),
         ],
       ) : Row(
-        children: <Widget>[
+        children: [
           Expanded(
             child: Chart(
               expenses: _registeredExpenses,

@@ -57,11 +57,13 @@ class Chart extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 for (final bucket in buckets) // alternative to map()
-                  ChartBar(
-                    fill: bucket.totalExpenses == 0
-                        ? 0
-                        : bucket.totalExpenses / maxTotalExpense,
-                  )
+                  Expanded(
+                    child: ChartBar(
+                      fill: bucket.totalExpenses == 0
+                          ? 0
+                          : bucket.totalExpenses / maxTotalExpense,
+                    )
+                  ),
               ],
             ),
           ),
