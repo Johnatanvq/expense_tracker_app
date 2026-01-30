@@ -2,9 +2,9 @@
   <h1>Expense Tracker App</h1>
 
   <div align="center">
-    <img src="https://github.com/Johnatanvq/expense_tracker_app/blob/master/assets/images/main_screen.png" alt="Expense Tracker List" width="29%" /> 
-    <img src="https://github.com/Johnatanvq/expense_tracker_app/blob/master/assets/images/dark_mode.png" alt="Dark Mode Support" width="30%" /> 
-    <img src="https://github.com/Johnatanvq/expense_tracker_app/blob/master/assets/images/add_expense.png" alt="Add Expense Modal" width="29%" /> 
+    <img src="https://github.com/Johnatanvq/expense_tracker_app/blob/master/assets/images/main_screen.png" alt="Expense Tracker List" width="29%"/> 
+    <img src="https://github.com/Johnatanvq/expense_tracker_app/blob/master/assets/images/dark_mode.png" alt="Dark Mode Support" width="30%"/> 
+    <img src="https://github.com/Johnatanvq/expense_tracker_app/blob/master/assets/images/add_expense.png" alt="Add Expense Modal" width="29%"/> 
   </div>
   
   <p> <strong>A robust, responsive expense management tool featuring Material 3 design, dynamic theming, and adaptive layouts.</strong> </p>
